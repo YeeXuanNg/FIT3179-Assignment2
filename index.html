@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet" href="style.css">
+
+    <script src="https://cdn.jsdelivr.net/npm/vega@5.20.2"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vega-lite@5.1.0"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vega-embed@6.17.0"></script>
+
+    <script src="https://cdn.jsdelivr.net/npm/vega@5"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vega-lite@5"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vega-embed@6"></script>
+
+
+    <script src="vega_lite_vis.js"></script>
+</head>
+
+<body>
+
+    <div class="page">
+        <!-- Title and Description -->
+         <h1>Water Usage and Supply Trends in Malaysia (2020 - 2022)</h1>
+         <p>Water is the lifeblood of Malaysia, sustaining both communities and industries. 
+            Between 2020 and 2022, total water production rose steadily by 900 million liters per day, 
+            while consumption remained largely stable. 
+            The chart below offers a national-level view, 
+            illustrating how supply has expanded over time and how it compares with the relatively steady demand.</p>
+
+        <!-- Spacing-->
+        <div class=space></div>
+
+        <!-- Chart -->    
+        <div id="overview_chart"></div>
+
+        <!-- Description-->
+        <p>From a national perspective, Malaysia’s water supply has grown 
+            while overall consumption has remained steady. 
+            But the story becomes more intricate when we look closer at each state.</p>
+        
+        <!--Choropleth Map-->
+        <p>Zooming in at the state level, per capita water usage highlights the differences 
+            in domestic and industrial demand across regions. 
+            Some states consume more water per person, reflecting variations in population density, 
+            lifestyle, and economic activity.
+        </p>
+    
+        <div id="water_consumption_chart"></div>
+        
+         <!--Bar Chart-->
+        <p>When viewed alongside total water production by state, it becomes clear how supply meets regional demand. 
+            Comparing these charts reveals which states have surplus capacity 
+            and which may face challenges in aligning production with consumption.</p>
+
+        <div id="water_production_chart"></div>
+
+        <p>Earlier, we saw that Malaysia’s national water production has increased steadily, 
+            while consumption has remained relatively stable. 
+            But every drop of treated water comes from raw water—drawn from rivers, dams, groundwater, and other sources. 
+            Understanding raw water availability is essential to see how production is sustained over time.</p>
+
+        <h2>Raw Water Resources</h2>
+
+        <div id="water_resources_chart"></div>
+
+        <p>The line chart showing total raw water extraction from 2020 to 2022 highlights the overall trend in national water availability. 
+            It reflects both natural conditions and water management practices, providing context for the production capacities we observed earlier.</p>
+
+        <h2>Breakdown by Source</h2>
+
+        <p>Not all raw water is the same. 
+            The donut charts illustrate how rivers, dams and other sources contribute to the national supply, 
+            with each slice representing a year from 2020 to 2022. 
+            This breakdown reveals which sources are most relied upon and how the composition of raw water has shifted over time, 
+            forming the foundation for Malaysia’s water production.</p>
+
+        <div id="breakdown_chart"></div>
+
+    </div>
+
+</body>
+
+</html>

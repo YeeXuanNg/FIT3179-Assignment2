@@ -1,0 +1,29 @@
+*{
+    font-family: 'Poppins', sans-serif;
+}
+
+body {
+      background-color: lightgray;
+    }
+
+.page {
+      width: 1000px;
+      background-color: white;
+      margin: auto;
+      padding: 70px;
+      padding-top: 35px;
+    }
+
+h1 {
+  font-size: 29px;
+}
+
+p {
+    font-size: 19px;
+}
+
+.space {
+    height: 20px;
+}
+
+

@@ -1,0 +1,49 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "width": 900,
+  "height": 400,
+  "title": {
+    "text": "Total Raw Water Extraction (MLD)",
+    "subtitle": "Excludes Sabah & Sarawak",
+    "fontSize": 22,
+    "fontWeight": "bold",
+    "anchor": "middle"
+  },
+  "data": {
+    "url": "https://raw.githubusercontent.com/YeeXuanNg/FIT3179-Assignment2/refs/heads/main/total_raw_water_extraction.csv"
+  },
+  "layer": [
+    {
+      "mark": {"type": "line", "point": true, "color": "#0072B2"},
+      "encoding": {
+        "x": {"field": "Year", "type": "ordinal", "title": "Year"},
+        "y": {"field": "Value", "type": "quantitative", "title": "Volume (MLD)"},
+        "tooltip": [
+          {"field": "Year", "type": "ordinal", "title": "Year"},
+          {"field": "Value", "type": "quantitative", "title": "Volume (MLD)"}
+        ]
+      }
+    },
+    {
+      "mark": {"type": "text", "dy": -10, "color": "#0072B2", "size": 14},
+      "encoding": {
+        "x": {"field": "Year", "type": "ordinal"},
+        "y": {"field": "Value", "type": "quantitative"},
+        "text": {"field": "Value", "type": "quantitative"}
+      }
+    },
+    {
+      "data": {
+        "values": [
+          {"Year": 2021, "y": 15884, "text": "2021 drop: 1.2% lower than 2020"}
+        ]
+      },
+      "mark": {"type": "text", "dy": 15, "dx":450, "color": "#000000", "size": 14, "align": "center"},
+      "encoding": {
+        "x": {"field": "Year", "type": "ordinal"},
+        "y": {"field": "y", "type": "quantitative"},
+        "text": {"field": "text", "type": "nominal"}
+      }
+    }
+  ]
+}

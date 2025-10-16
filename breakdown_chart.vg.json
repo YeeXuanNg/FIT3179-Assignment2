@@ -1,0 +1,188 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "hconcat": [
+    {
+      "width": 300,
+      "height": 200,
+      "data": {
+        "url": "https://raw.githubusercontent.com/YeeXuanNg/FIT3179-Assignment2/refs/heads/main/river_extraction.csv"
+      },
+      "transform": [
+        {
+          "window": [{"op": "sum", "field": "Value", "as": "cumulative_value"}],
+          "frame": [null, 0]
+        },
+        {
+          "calculate": "datum.cumulative_value - datum.Value/2",
+          "as": "text_position"
+        }
+      ],
+      "layer": [
+        {
+          "mark": {"type": "arc", "innerRadius": 50},
+          "encoding": {
+            "theta": {"field": "Value", "type": "quantitative","stack":true},
+            "color": {
+              "field": "Year",
+              "type": "nominal",
+              "scale": {"scheme": "set2"},
+              "legend": {"title": "Year"}
+            },
+            "tooltip": [
+              {"field": "Year", "type": "nominal"},
+              {"field": "Value", "type": "quantitative", "title": "River Extraction (%)"}
+            ]
+          }
+        },
+        {
+          "mark": {
+            "type": "text",
+            "radius": 85,
+            "fontSize": 12,
+            "fontWeight": "bold"
+          },
+          "encoding": {
+            "theta": {"field": "text_position", "type": "quantitative"},
+            "text": {"field": "Value", "type": "quantitative", "format": ".1f"},
+            "color": {"value": "#000000"}
+          }
+        },
+        {
+          "mark": {
+            "type": "text",
+            "fontSize": 18,
+            "fontWeight": "bold",
+            "color": "#000000",
+            "align": "center",
+            "baseline": "middle"
+          },
+          "encoding": {
+            "text": {"value": "River"}
+          }
+        }
+      ]
+    },
+    {
+      "width": 300,
+      "height": 200,
+      "data": {
+        "url": "https://raw.githubusercontent.com/YeeXuanNg/FIT3179-Assignment2/refs/heads/main/dam_extraction.csv"
+      },
+      "transform": [
+        {
+          "window": [{"op": "sum", "field": "Value", "as": "cumulative_value"}],
+          "frame": [null, 0]
+        },
+        {
+          "calculate": "datum.cumulative_value - datum.Value/2",
+          "as": "text_position"
+        }
+      ],
+      "layer": [
+        {
+          "mark": {"type": "arc", "innerRadius": 50},
+          "encoding": {
+            "theta": {"field": "Value", "type": "quantitative", "stack":true},
+            "color": {
+              "field": "Year",
+              "type": "nominal",
+              "scale": {"scheme": "set2"},
+              "legend": null
+            },
+            "tooltip": [
+              {"field": "Year", "type": "nominal"},
+              {"field": "Value", "type": "quantitative", "title": "Dam Extraction (%)"}
+            ]
+          }
+        },
+        {
+          "mark": {
+            "type": "text",
+            "radius": 85,
+            "fontSize": 12,
+            "fontWeight": "bold"
+          },
+          "encoding": {
+            "theta": {"field": "text_position", "type": "quantitative"},
+            "text": {"field": "Value", "type": "quantitative", "format": ".1f"},
+            "color": {"value": "#000000"}
+          }
+        },
+        {
+          "mark": {
+            "type": "text",
+            "fontSize": 18,
+            "fontWeight": "bold",
+            "color": "#000000",
+            "align": "center",
+            "baseline": "middle"
+          },
+          "encoding": {
+            "text": {"value": "Dam"}
+          }
+        }
+      ]
+    },
+    {
+      "width": 300,
+      "height": 200,
+      "data": {
+        "url": "https://raw.githubusercontent.com/YeeXuanNg/FIT3179-Assignment2/refs/heads/main/other_extraction.csv"
+      },
+      "transform": [
+        {
+          "window": [{"op": "sum", "field": "Value", "as": "cumulative_value"}],
+          "frame": [null, 0]
+        },
+        {
+          "calculate": "datum.cumulative_value - datum.Value/2",
+          "as": "text_position"
+        }
+      ],
+      "layer": [
+        {
+          "mark": {"type": "arc", "innerRadius": 50},
+          "encoding": {
+            "theta": {"field": "Value", "type": "quantitative","stack":true},
+            "color": {
+              "field": "Year",
+              "type": "nominal",
+              "scale": {"scheme": "set2"},
+              "legend": null
+            },
+            "tooltip": [
+              {"field": "Year", "type": "nominal"},
+              {"field": "Value", "type": "quantitative", "title": "Other Extraction (%)"}
+            ]
+          }
+        },
+        {
+          "mark": {
+            "type": "text",
+            "radius": 85,
+            "fontSize": 12,
+            "fontWeight": "bold"
+          },
+          "encoding": {
+            "theta": {"field": "text_position", "type": "quantitative"},
+            "text": {"field": "Value", "type": "quantitative", "format": ".1f"},
+            "color": {"value": "#000000"}
+          }
+        },
+        {
+          "mark": {
+            "type": "text",
+            "fontSize": 18,
+            "fontWeight": "bold",
+            "color": "#000000",
+            "align": "center",
+            "baseline": "middle"
+          },
+          "encoding": {
+            "text": {"value": "Others"}
+          }
+        }
+      ]
+    }
+  ]
+}

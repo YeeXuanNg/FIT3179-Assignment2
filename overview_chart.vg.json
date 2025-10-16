@@ -1,0 +1,82 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "width": 900,
+  "height": 350,
+  "title": {
+  "text": "Malaysia Water Production and Consumption (MLD)",
+  "fontSize": 19,       
+  "fontWeight": "bold", 
+  "anchor": "middle"
+  },
+  "layer": [
+    {
+      "data": {
+        "url": "https://raw.githubusercontent.com/YeeXuanNg/FIT3179-Assignment2/refs/heads/main/water_production_malaysia.csv"
+      },
+      "transform": [
+        {"calculate": "'Production'", "as": "category"}
+      ],
+      "mark": {"type": "line", "point": true},
+      "encoding": {
+        "x": {"field": "date", "type": "temporal", "timeUnit": "year", "title": "Year"},
+        "y": {"field": "value", "type": "quantitative", "title": "Volume (MLD)"},
+        "color": {
+          "field": "category",
+          "type": "nominal",
+          "scale": {"range": ["#0072B2", "#E69F00"]},
+          "legend": {"title": "Category"}
+        },
+        "tooltip": [
+          {"field": "category", "title": "Category"},
+          {"field": "date", "type": "temporal", "timeUnit": "year", "title": "Year"},
+          {"field": "value", "type": "quantitative", "title": "Volume (MLD)"}
+        ]
+      }
+    },
+    {
+      "data": {
+        "url": "https://raw.githubusercontent.com/YeeXuanNg/FIT3179-Assignment2/refs/heads/main/water_consumption_malaysia.csv"
+      },
+      "transform": [
+        {
+          "aggregate": [
+            {"op": "sum", "field": "value", "as": "total_consumption"}
+          ],
+          "groupby": ["date"]
+        },
+        {"calculate": "'Consumption'", "as": "category"}
+      ],
+      "mark": {"type": "line", "point": true},
+      "encoding": {
+        "x": {"field": "date", "type": "temporal", "timeUnit": "year"},
+        "y": {"field": "total_consumption", "type": "quantitative", "title": "Volume (MLD)"},
+        "color": {
+          "field": "category",
+          "type": "nominal",
+          "scale": {"range": ["#0072B2", "#E69F00"]},
+          "legend": {"title": "Category"}
+        },
+        "tooltip": [
+          {"field": "category", "title": "Category"},
+          {"field": "date", "type": "temporal", "timeUnit": "year", "title": "Year"},
+          {"field": "total_consumption", "type": "quantitative", "title": "Volume (MLD)"}
+        ]
+      }
+    },
+    {
+      "data": {
+        "values": [
+          {"date": "2022-01-01", "y": 18500, "text": "Production increased 900 MLD in 3 years"},
+          {"date": "2022-01-01", "y": 11800, "text": "Consumption relatively stable"}
+        ]
+      },
+      "mark": {"type": "text", "dy": -15, "dx": -120, "size": 12},
+      "encoding": {
+        "x": {"field": "date", "type": "temporal"},
+        "y": {"field": "y", "type": "quantitative"},
+        "text": {"field": "text", "type": "nominal"},
+        "color": {"value": "#000000"}
+      }
+    }
+  ]
+}

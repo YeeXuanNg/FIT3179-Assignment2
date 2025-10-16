@@ -1,0 +1,62 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "title": { "text": "Water Production in Malaysia (MLD)" },
+  "width": 900,
+  "height": 400,
+  "data": {
+    "url": "https://raw.githubusercontent.com/YeeXuanNg/FIT3179-HomeworkWeek10/refs/heads/main/water_production.csv"
+  },
+  "transform": [
+    { "calculate": "year(toDate(datum.date))", "as": "year" },
+    { "filter": "datum.year == year_selection" }
+  ],
+  "params": [
+    {
+      "name": "year_selection",
+      "bind": {
+        "input": "select",
+        "options": [2020, 2021, 2022],
+        "name": "Select Year: "
+      },
+      "value": 2022
+    }
+  ],
+  "layer": [
+    {
+      "mark": { "type": "bar", "color": "#4C78A8" },
+      "encoding": {
+        "x": {
+          "field": "value",
+          "type": "quantitative",
+          "title": "Water Production (MLD)"
+        },
+        "y": {
+          "field": "state",
+          "type": "nominal",
+          "title": "State",
+          "sort": "-x"
+        },
+        "tooltip": [
+          { "field": "state", "title": "State" },
+          { "field": "year", "title": "Year" },
+          { "field": "value", "title": "Water Production (MLD)", "format": "," }
+        ]
+      }
+    },
+    {
+      "mark": {
+        "type": "text",
+        "align": "right",
+        "baseline": "middle",
+        "dx": -3,
+        "fontSize": 9,
+        "color": "white"
+      },
+      "encoding": {
+        "x": { "field": "value", "type": "quantitative" },
+        "y": { "field": "state", "type": "nominal", "sort": "-x" },
+        "text": { "field": "value", "type": "quantitative", "format": ",.0f" }
+      }
+    }
+  ]
+}
